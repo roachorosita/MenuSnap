@@ -3,20 +3,24 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.uix.floatlayout import FloatLayout
-#from kivy.animation import Animation, AnimationTransition
-#from kivy.uix.widget import Widget
+from kivy.uix.gridlayout import GridLayout
 
 
 class HomeScreen(Screen):
     pass
-class OptionScreen(Screen):
+class Screen1(Screen):
+    pass
+class Screen2(Screen):
+    pass
+class Screen3(Screen):
+    pass
+class Screen4(Screen):
+    pass
+class Screen5(Screen):
     pass
 class ScreenManagement(ScreenManager):
     pass
-#class CustomLayout(FloatLayout):
-    #pass
-#class SmileAnimate(Animation):
-    #pass
+
 
 screens = Builder.load_file("temp.kv")
 
