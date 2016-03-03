@@ -1,6 +1,7 @@
 import urllib
 import urllib2
 import json
+import copy
 
 def locu_search(query):
     locu_api = '77ca60baa8056bc0c1aa6f422bc525a56ed1443e'
@@ -28,16 +29,24 @@ def locu_search(query):
         print item['phone']
         print item['website_url']
         print item['street_address']
+        print item['postal_code']
 
     return data
 
 data = locu_search('los angeles')
-print data
-test = {'name': None, 'phone': None, 'website_url': None}
+#print data
+test = {'name': None, 'phone': None, 'url': None, 'location': None, 'address': None}
+
+restaurant_list = []
+
+for i in range(5):
+    restaurant_list.append(dict.copy(test))
+    
 for item in range(5):
-    test['name'] = data['objects'][item]['name']
-for item in range(5):
-    test['phone'] = data['objects'][item]['phone']
-for item in range(5):
-    test['website_url'] = data['objects'][item]['website_url']
-print test
+    restaurant_list[item]['name'] = str(data['objects'][item]['name'])
+    restaurant_list[item]['phone'] = str(data['objects'][item]['phone'])
+    restaurant_list[item]['url'] = str(data['objects'][item]['website_url'])
+    restaurant_list[item]['location'] = str(data['objects'][item]['locality'])
+    restaurant_list[item]['address'] = str(data['objects'][item]['street_address']) + ' ' + str(data['objects'][item]['locality']) + ', ' + str(data['objects'][item]['region']) + ' ' + str(data['objects'][item]['postal_code']) 
+
+print "Print the list: \n", restaurant_list

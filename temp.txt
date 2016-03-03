@@ -11,7 +11,7 @@ ScreenManagement:
     name: 'main'
     BoxLayout:    
         Button:
-            on_release: root.manager.current = 'next'
+            on_release:root.manager.current = 'next'
     GridLayout:
         cols: 1
         padding: 10
@@ -58,7 +58,7 @@ ScreenManagement:
     name: 'next'
     BoxLayout:
         Button: 
-            on_release: root.manager.current = 'main'
+            on_release:root.manager.current = 'main'
             text: 'Back Home'
             font_size: 25
             pos_hint:{'left':0, 'bottom':0}
