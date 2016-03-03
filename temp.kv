@@ -61,14 +61,24 @@ ScreenManagement:
             font_size: 25
             pos_hint:{'left':0, 'bottom':0}
             size_hint: 0.5, 0.1
-            GridLayout:
-                size_hint: self.parent.width, self.parent.height
-                #pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                rows: 1
-                Label:
-                    text: "Name of Screen 1"
-                    font_size: 25
-                    valign: 'top'
+    GridLayout:
+        size_hint: 1, 0.9
+        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+        rows:1
+        Label:
+            text: "Starbucks"
+            font_size: 25
+            text_size: self.size
+            valign: 'top'
+            halign: 'center'
+        Label:
+            text: "Location: Cal Poly Pomona"
+            font_size: 20
+            text_size: self.size
+            valign: 'top' #top, bottom, middle
+            halign: 'right' #left, right, center, justify
+
+       
 <Screen2>:
     name: 'Screen2'
     BoxLayout:    
