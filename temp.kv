@@ -22,7 +22,7 @@ ScreenManagement:
     Button:
         on_release: root.manager.current = 'Screen2'
         text: app.h[1]['name']
-        size_hint:self.parent.width, 0.15
+        size_hint: self.parent.width, 0.15
         pos_hint:{'center_x': .5, 'center_y': .65}
         font_size: 25
     Button:
@@ -55,17 +55,8 @@ ScreenManagement:
 
 <Screen1>:
     name: 'Screen1'
-    BoxLayout:    
-        Button: 
-            on_release: root.manager.current = 'main'
-            text: 'Back Home from Screen 1'
-            font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
-            size_hint: 0.5, 0.1
-    GridLayout:
-        size_hint: 1, 0.9
-        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
-        rows:1
+    BoxLayout:
+        orientation: 'vertical'
         Label:
             text: "Starbucks"
             font_size: 25
@@ -77,28 +68,42 @@ ScreenManagement:
             font_size: 20
             text_size: self.size
             valign: 'top' #top, bottom, middle
-            halign: 'right' #left, right, center, justify
-
+            halign: 'center' #left, right, center, justify
+        Button:
+            on_release: root.manager.current = 'main'
+            text: 'Home'
+            font_size: 25
+            pos_hint:{'left':0, 'bottom':0}
+            size_hint: 0.3, 0.1
        
 <Screen2>:
     name: 'Screen2'
-    BoxLayout:    
+    BoxLayout:
+        orientation: 'vertical'
+        ListView:
+            item_strings: [str(index) for index in range(100)]
         Button: 
             on_release: root.manager.current = 'main'
-            text: 'Back Home from Screen 2'
+            text: 'Home'
             font_size: 25
             pos_hint:{'left':0, 'bottom':0}
-            size_hint: 0.5, 0.1
+            size_hint: 0.3, 0.1
 
 <Screen3>:
     name: 'Screen3'
     BoxLayout:    
-        Button: 
+        Button:
             on_release: root.manager.current = 'main'
-            text: 'Back Home from Screen 3'
-            font_size: 25
             pos_hint:{'left':0, 'bottom':0}
             size_hint: 0.5, 0.1
+            GridLayout:
+                rows:2
+                Label:
+                    text: 'swag'
+                    size:
+                Label:
+                    text: 'swaggy'
+
 
 <Screen4>:
     name: 'Screen4'
