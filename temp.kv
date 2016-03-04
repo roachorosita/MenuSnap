@@ -1,5 +1,6 @@
 # File name: temp.py
 #: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
 ScreenManagement: 
     transition: FadeTransition()
@@ -11,34 +12,34 @@ ScreenManagement:
     Screen5:
 
 <HomeScreen>:
-    name: 'main'     
+    name: 'main'
     Button:
         on_release: root.manager.current = 'Screen1'
-        text:"Button 1"
+        text: app.h[0]['name']
         size_hint:self.parent.width, 0.15
         pos_hint:{'center_x': .5, 'center_y': .80}
         font_size: 25
     Button:
         on_release: root.manager.current = 'Screen2'
-        text:"Button 2"
+        text: app.h[1]['name']
         size_hint:self.parent.width, 0.15
         pos_hint:{'center_x': .5, 'center_y': .65}
         font_size: 25
     Button:
         on_release: root.manager.current = 'Screen3'
-        text:"Button 3"
+        text: app.h[2]['name']
         size_hint:self.parent.width, 0.15
         pos_hint:{'center_x': .5, 'center_y': .5}
         font_size: 25
     Button:
         on_release: root.manager.current = 'Screen4'
-        text:"Button 4"
+        text: app.h[3]['name']
         size_hint:self.parent.width, 0.15
         pos_hint:{'center_x': .5, 'center_y': .35}
         font_size: 25
     Button:
         on_release: root.manager.current = 'Screen5'
-        text:"Button 5"
+        text: app.h[4]['name']
         size_hint:self.parent.width, 0.15
         pos_hint:{'center_x': .5, 'center_y': .2}
         font_size: 25
