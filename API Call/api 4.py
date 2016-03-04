@@ -8,7 +8,7 @@ import json
 # Replace with the correct URL
 url = "https://api.locu.com/v1_0/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&location=34.056286,-117.81601&radius=1600&category=restaurant"
 url2 = "https://api.locu.com/v1_0/menu_item/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&name=burrito"
-url3 = "https://api.locu.com/v2/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&locality=starbucks"
+url3 = "https://api.locu.com/v2/venue/search/"
 # It is a good practice not to hardcode the credentials. So ask the user to enter credentials at runtime
 myResponse = requests.get(url3)
 #print (myResponse.status_code)
