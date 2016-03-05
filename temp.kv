@@ -57,19 +57,21 @@ ScreenManagement:
     name: 'Screen1'
     BoxLayout:
         orientation: 'vertical'
-        Label:
-            text: "Starbucks"
-            font_size: 25
-            text_size: self.size
-            valign: 'top'
-            halign: 'center'
-        Label:
-            text: "Location: Cal Poly Pomona"
-            font_size: 20
-            text_size: self.size
-            valign: 'top' #top, bottom, middle
-            halign: 'center' #left, right, center, justify
-        Button:
+		Button:
+			text: 'menu'
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[0]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    font_size: 25
+            item_strings: [str(app.h[0]['name']), str(app.h[0]['phone']), str(app.h[0]['url']), str(app.h[0]['address'])]
+        
+			
+		Button: 
             on_release: root.manager.current = 'main'
             text: 'Home'
             font_size: 25
@@ -80,9 +82,20 @@ ScreenManagement:
     name: 'Screen2'
     BoxLayout:
         orientation: 'vertical'
-        ListView:
-            item_strings: [str(index) for index in range(100)]
-        Button: 
+		Button:
+			text: 'menu'
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[1]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    font_size: 25
+            item_strings: [str(app.h[1]['name']), str(app.h[1]['phone']), str(app.h[1]['url']), str(app.h[1]['address'])]
+        
+		Button: 
             on_release: root.manager.current = 'main'
             text: 'Home'
             font_size: 25
@@ -91,37 +104,81 @@ ScreenManagement:
 
 <Screen3>:
     name: 'Screen3'
-    BoxLayout:    
-        Button:
+    BoxLayout:
+        orientation: 'vertical'
+		Button:
+			text: 'menu'
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[2]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    font_size: 25
+            item_strings: [str(app.h[2]['name']), str(app.h[2]['phone']), str(app.h[2]['url']), str(app.h[2]['address'])]
+        
+			
+		Button: 
             on_release: root.manager.current = 'main'
+            text: 'Home'
+            font_size: 25
             pos_hint:{'left':0, 'bottom':0}
-            size_hint: 0.5, 0.1
-            GridLayout:
-                rows:2
-                Label:
-                    text: 'swag'
-                    size:
-                Label:
-                    text: 'swaggy'
+            size_hint: 0.3, 0.1
+			
+		
+		    
 
 
 <Screen4>:
     name: 'Screen4'
-    BoxLayout:    
-        Button: 
+    BoxLayout:
+        orientation: 'vertical'
+		Button:
+			text: 'menu'
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[3]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    font_size: 25
+            item_strings: [str(app.h[3]['name']), str(app.h[3]['phone']), str(app.h[3]['url']), str(app.h[3]['address'])]
+        
+			
+		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Back Home from Screen 4'
+            text: 'Home'
             font_size: 25
             pos_hint:{'left':0, 'bottom':0}
-            size_hint: 0.5, 0.1
-
-<Screen4>:
+            size_hint: 0.3, 0.1
+			
+			
+<Screen5>:
     name: 'Screen5'
-    BoxLayout:    
-        Button: 
+    BoxLayout:
+        orientation: 'vertical'
+		Button:
+			text: 'menu'
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[4]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    font_size: 25
+            item_strings: [str(app.h[4]['name']), str(app.h[4]['phone']), str(app.h[4]['url']), str(app.h[4]['address'])]
+        
+			
+		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Back Home from Screen 5'
+            text: 'Home'
             font_size: 25
             pos_hint:{'left':0, 'bottom':0}
-            size_hint: 0.5, 0.1
+            size_hint: 0.3, 0.1
     

@@ -69,8 +69,6 @@ class MainApp(App):
 
     h=parse()
     print h
-    cat = sorted(h)
-    print cat
     def build(self):
         return Builder.load_file("temp.kv")
 
