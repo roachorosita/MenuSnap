@@ -87,8 +87,16 @@ ScreenManagement:
     name: 'Screen1'
     BoxLayout:
         orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
 		Button:
-			text: 'menu'
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
 		    on_release: 
 			    import webbrowser
 				webbrowser.open(str(app.h[0]['menu_url']))
@@ -97,23 +105,32 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 			
 		ListView:
-		    font_size: 25
-            item_strings: [str(app.h[0]['name']), str(app.h[0]['phone']), str(app.h[0]['url']), str(app.h[0]['address'])]
+		    item_strings: [str("\nRESTAURANT"), str(app.h[0]['name']), str("\nPHONE NUMBER"), str(app.h[0]['phone']), str("\nWEBSITE"), str(app.h[0]['url']), str("\nADDRESS"), str(app.h[0]['address'])]
         
 			
 		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Home'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
             font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
+            pos_hint:{'center_x': 0.5, 'bottom':0}
             size_hint: 0.3, 0.1
        
+		    
 <Screen2>:
     name: 'Screen2'
     BoxLayout:
         orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
 		Button:
-			text: 'menu'
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
 		    on_release: 
 			    import webbrowser
 				webbrowser.open(str(app.h[1]['menu_url']))
@@ -122,22 +139,30 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 			
 		ListView:
-		    font_size: 25
-            item_strings: [str(app.h[1]['name']), str(app.h[1]['phone']), str(app.h[1]['url']), str(app.h[1]['address'])]
+		    item_strings: [str("\nRESTAURANT"), str(app.h[1]['name']), str("\nPHONE NUMBER"), str(app.h[1]['phone']), str("\nWEBSITE"), str(app.h[1]['url']), str("\nADDRESS"), str(app.h[1]['address'])]
         
 		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Home'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
             font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
+            pos_hint:{'center_x': 0.5, 'bottom':0}
             size_hint: 0.3, 0.1
 
 <Screen3>:
     name: 'Screen3'
     BoxLayout:
         orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
 		Button:
-			text: 'menu'
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
 		    on_release: 
 			    import webbrowser
 				webbrowser.open(str(app.h[2]['menu_url']))
@@ -146,27 +171,32 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 			
 		ListView:
-		    font_size: 25
-            item_strings: [str(app.h[2]['name']), str(app.h[2]['phone']), str(app.h[2]['url']), str(app.h[2]['address'])]
+            item_strings: [str("\nRESTAURANT"), str(app.h[2]['name']), str("\nPHONE NUMBER"), str(app.h[2]['phone']), str("\nWEBSITE"), str(app.h[2]['url']), str("\nADDRESS"), str(app.h[2]['address'])]
         
 			
 		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Home'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
             font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
+            pos_hint:{'center_x':0.5, 'bottom':0}
             size_hint: 0.3, 0.1
 			
-		
-		    
-
-
+				   
 <Screen4>:
     name: 'Screen4'
     BoxLayout:
         orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
 		Button:
-			text: 'menu'
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
 		    on_release: 
 			    import webbrowser
 				webbrowser.open(str(app.h[3]['menu_url']))
@@ -175,15 +205,15 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 			
 		ListView:
-		    font_size: 25
-            item_strings: [str(app.h[3]['name']), str(app.h[3]['phone']), str(app.h[3]['url']), str(app.h[3]['address'])]
+            item_strings: [str("\nRESTAURANT"), str(app.h[3]['name']), str("\nPHONE NUMBER"), str(app.h[3]['phone']), str("\nWEBSITE"), str(app.h[3]['url']), str("\nADDRESS"), str(app.h[3]['address'])]
         
 			
 		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Home'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
             font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
+            pos_hint:{'center_x': 0.5, 'bottom':0}
             size_hint: 0.3, 0.1
 			
 			
@@ -191,8 +221,16 @@ ScreenManagement:
     name: 'Screen5'
     BoxLayout:
         orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
 		Button:
-			text: 'menu'
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
 		    on_release: 
 			    import webbrowser
 				webbrowser.open(str(app.h[4]['menu_url']))
@@ -201,14 +239,14 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 			
 		ListView:
-		    font_size: 25
-            item_strings: [str(app.h[4]['name']), str(app.h[4]['phone']), str(app.h[4]['url']), str(app.h[4]['address'])]
+            item_strings: [str("\nRESTAURANT"), str(app.h[4]['name']), str("\nPHONE NUMBER"), str(app.h[4]['phone']), str("\nWEBSITE"), str(app.h[4]['url']), str("\nADDRESS"), str(app.h[4]['address'])]
         
 			
 		Button: 
             on_release: root.manager.current = 'main'
-            text: 'Home'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
             font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
+            pos_hint:{'center_x':0.5, 'bottom':0}
             size_hint: 0.3, 0.1
     

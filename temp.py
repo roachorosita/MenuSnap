@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.lang import Builder
+<<<<<<< HEAD
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.textinput import TextInput
@@ -12,6 +13,18 @@ class APICall:
         self.lon = longitude
         self.lat = latitude
         self.rad = radius
+=======
+from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
+from kivy.properties import StringProperty, NumericProperty, ObjectProperty
+from kivy.uix.floatlayout import FloatLayout
+import json
+import urllib2
+
+
+def locu_search(gps):
+    #locu_api = '77ca60baa8056bc0c1aa6f422bc525a56ed1443e'
+    url = 'https://api.locu.com/v1_0/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&location=34.056286,-117.81601&radius=1600&category=restaurant'
+>>>>>>> origin/merge
 
     def locu_search(self):
         print self.lon, self.lat
@@ -20,6 +33,7 @@ class APICall:
         url = 'https://api.locu.com/v1_0/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&location=' \
               + str(self.lon) + ',' + str(self.lat) + '&radius=' + str(self.rad) + '&category=restaurant'
 
+<<<<<<< HEAD
         param = '{ "api_key" : "77ca60baa8056bc0c1aa6f422bc525a56ed1443e",' \
                ' "fields" : [ "name", "location", "contact", "website_url", "menu_url"],' \
                ' "venue_queries" : [{ "categories" : "restaurant",' \
@@ -29,6 +43,10 @@ class APICall:
         result = json.load(save)
         print result
         return result
+=======
+	
+def parse():
+>>>>>>> origin/merge
 
     def parse(self):
 
@@ -60,6 +78,7 @@ class APICall:
         print restaurant_list
         return restaurant_list
 
+	
 class HomeScreen(Screen):
     lon_value =  StringProperty()
     lat_value =  StringProperty()
@@ -84,7 +103,11 @@ class Screen5(Screen):
 class ScreenManagement(ScreenManager):
     pass
 
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/merge
 class MainApp(App):
 
     def build(self):
