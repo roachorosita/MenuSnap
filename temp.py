@@ -4,10 +4,9 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.gridlayout import GridLayout
-
 import json
 import urllib2
+
 
 def locu_search(gps):
     #locu_api = '77ca60baa8056bc0c1aa6f422bc525a56ed1443e'
@@ -22,6 +21,7 @@ def locu_search(gps):
     result = json.load(save)
     return result
 
+	
 def parse():
 
     data = locu_search('test')
@@ -50,6 +50,7 @@ def parse():
 
     return restaurant_list
 
+	
 class HomeScreen(Screen):
     pass
 class Screen1(Screen):
@@ -65,6 +66,7 @@ class Screen5(Screen):
 class ScreenManagement(ScreenManager):
     pass
 
+	
 class MainApp(App):
 
     h=parse()
