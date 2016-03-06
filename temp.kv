@@ -1,6 +1,5 @@
 # File name: temp.py
 #: import FadeTransition kivy.uix.screenmanager.FadeTransition
-#: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
 ScreenManagement: 
     transition: FadeTransition()
@@ -13,45 +12,76 @@ ScreenManagement:
 
 <HomeScreen>:
     name: 'main'
-    Button:
-        on_release: root.manager.current = 'Screen1'
-        text: app.h[0]['name']
-        size_hint:self.parent.width, 0.15
-        pos_hint:{'center_x': .5, 'center_y': .80}
-        font_size: 25
-    Button:
-        on_release: root.manager.current = 'Screen2'
-        text: app.h[1]['name']
-        size_hint: self.parent.width, 0.15
-        pos_hint:{'center_x': .5, 'center_y': .65}
-        font_size: 25
-    Button:
-        on_release: root.manager.current = 'Screen3'
-        text: app.h[2]['name']
-        size_hint:self.parent.width, 0.15
-        pos_hint:{'center_x': .5, 'center_y': .5}
-        font_size: 25
-    Button:
-        on_release: root.manager.current = 'Screen4'
-        text: app.h[3]['name']
-        size_hint:self.parent.width, 0.15
-        pos_hint:{'center_x': .5, 'center_y': .35}
-        font_size: 25
-    Button:
-        on_release: root.manager.current = 'Screen5'
-        text: app.h[4]['name']
-        size_hint:self.parent.width, 0.15
-        pos_hint:{'center_x': .5, 'center_y': .2}
-        font_size: 25
-    GridLayout:
-        size_hint: self.parent.width, 0.15
-        pos_hint:{'center_x': .5, 'center_y': 0.05}
-        rows:1
-        Label:
-            text: "Current Location"
-            font_size: 15
-            valign: 'bottom'
-            halign: 'center'
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            id: b1
+            on_release: root.manager.current = 'Screen1'
+            text: app.h[0]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b2
+            on_release: root.manager.current = 'Screen2'
+            text: app.h[1]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b3
+            on_release: root.manager.current = 'Screen3'
+            text: app.h[2]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b4
+            on_release: root.manager.current = 'Screen4'
+            text: app.h[3]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b5
+            on_release: root.manager.current = 'Screen5'
+            text: app.h[4]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        GridLayout:
+            size_hint: 0.5, 0.15
+            rows:1
+            Label:
+                text: "Current Location:"
+                font_size: 15
+                valign: 'bottom'
+                halign: 'left'
+            TextInput:
+                name: 'longitude'
+                hint_text: "Longitude"
+                multiline: False
+                on_text_validate:
+                    app.API.lon =  self.text
+
+
+            TextInput:
+                name: 'latitude'
+                hint_text: "Latitude"
+                multiline: False
+                on_text_validate:
+                    app.API.lat =  self.text
+
+            Button:
+                text: "Refresh"
+                on_release:
+                    app.h = app.API.parse()
+                    root.ids.b1.text = app.h[0]['name']
+                    root.ids.b2.text = app.h[1]['name']
+                    root.ids.b3.text = app.h[2]['name']
+                    root.ids.b4.text = app.h[3]['name']
+                    root.ids.b5.text = app.h[4]['name']
+
 
 <Screen1>:
     name: 'Screen1'
