@@ -1,59 +1,264 @@
-# File name: MainGUI.py
+# File name: temp.py
 #: import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 ScreenManagement: 
     transition: FadeTransition()
     HomeScreen:
-    OptionScreen:
+    Screen1:
+    Screen2:
+    Screen3:
+    Screen4:
+    Screen5:
 
 <HomeScreen>:
     name: 'main'
-    BoxLayout:    
-        Button:
-            on_release: root.manager.current = 'next'
-            Image: 
-                source: 'smileyface.png'
-                center: self.parent.center                
-                size: self.parent.size
-                
-                    
-
-<OptionScreen>:
-    name: 'next'
     BoxLayout:
-        Button: 
-            on_release: root.manager.current = 'main'
-            text: 'Back Home'
+        orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
+        Button:
+            id: b1
+			background_color: 0, 0, 1, 1
+            on_release: root.manager.current = 'Screen1'
+            text: app.h[0]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
             font_size: 25
-            pos_hint:{'left':0, 'bottom':0}
-            size_hint: 0.35, 0.1
-    Button:
-        text:"Status"
-        size_hint:0.35, 0.2
-        pos_hint:{'center_x': .3, 'center_y': .75}
-        font_size: 25
-    Button:
-        text:"To Dr. Lin's Office"
-        size_hint:0.35, 0.2
-        pos_hint:{'center_x': .7, 'center_y': .75}
-        font_size: 25
-    Button:
-        text:"Odometry"
-        size_hint:0.35, 0.2
-        pos_hint:{'center_x': .3, 'center_y': .5}
-        font_size: 25
-    Button:
-        text:"Button 4"
-        size_hint:0.35, 0.2
-        pos_hint:{'center_x': .7, 'center_y': .5}
-        font_size: 25
-    Button:
-        text:"Button 5"
-        size_hint:0.35, 0.2
-        pos_hint:{'center_x': .3, 'center_y': .25}
-        font_size: 25
-    Button:
-        text:"Button 6" 
-        size_hint:0.35, 0.2
-        pos_hint:{'center_x': .7, 'center_y': .25}
-        font_size: 25
+        Button:
+            id: b2
+			background_color: 0, 0, 1, 1
+            on_release: root.manager.current = 'Screen2'
+            text: app.h[1]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b3
+			background_color: 0, 0, 1, 1
+            on_release: root.manager.current = 'Screen3'
+            text: app.h[2]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b4
+			background_color: 0, 0, 1, 1
+            on_release: root.manager.current = 'Screen4'
+            text: app.h[3]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        Button:
+            id: b5
+			background_color: 0, 0, 1, 1
+            on_release: root.manager.current = 'Screen5'
+            text: app.h[4]['name']
+            size_hint: 0.5, 0.15
+            pos_hint: {'center_x': .5}
+            font_size: 25
+        GridLayout:
+            size_hint: 0.5, 0.1
+            pos_hint: {'center_x': 0.5}
+            rows:1
+			
+            TextInput:
+                name: 'latitude'
+                hint_text: "Latitude"
+                multiline: False
+                on_text_validate:
+                    app.API.lat =  self.text
+
+            TextInput:
+                name: 'longitude'
+                hint_text: "Longitude"
+                multiline: False
+                on_text_validate:
+                    app.API.lon =  self.text
+
+
+
+
+            Button:
+                text: "Refresh"
+				background_color: 0, 0, 1, 1
+                on_release:
+                    app.h = app.API.parse()
+                    root.ids.b1.text = app.h[0]['name']
+                    root.ids.b2.text = app.h[1]['name']
+                    root.ids.b3.text = app.h[2]['name']
+                    root.ids.b4.text = app.h[3]['name']
+                    root.ids.b5.text = app.h[4]['name']
+
+
+<Screen1>:
+    name: 'Screen1'
+    BoxLayout:
+        orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
+		Button:
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[0]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    item_strings: [str("\nRESTAURANT"), str(app.h[0]['name']), str("\nPHONE NUMBER"), str(app.h[0]['phone']), str("\nWEBSITE"), str(app.h[0]['url']), str("\nADDRESS"), str(app.h[0]['address'])]
+        
+			
+		Button: 
+            on_release: root.manager.current = 'main'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
+            font_size: 25
+            pos_hint:{'center_x': 0.5, 'bottom':0}
+            size_hint: 0.3, 0.1
+       
+		    
+<Screen2>:
+    name: 'Screen2'
+    BoxLayout:
+        orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
+		Button:
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[1]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+		    item_strings: [str("\nRESTAURANT"), str(app.h[1]['name']), str("\nPHONE NUMBER"), str(app.h[1]['phone']), str("\nWEBSITE"), str(app.h[1]['url']), str("\nADDRESS"), str(app.h[1]['address'])]
+        
+		Button: 
+            on_release: root.manager.current = 'main'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
+            font_size: 25
+            pos_hint:{'center_x': 0.5, 'bottom':0}
+            size_hint: 0.3, 0.1
+
+<Screen3>:
+    name: 'Screen3'
+    BoxLayout:
+        orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
+		Button:
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[2]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+            item_strings: [str("\nRESTAURANT"), str(app.h[2]['name']), str("\nPHONE NUMBER"), str(app.h[2]['phone']), str("\nWEBSITE"), str(app.h[2]['url']), str("\nADDRESS"), str(app.h[2]['address'])]
+        
+			
+		Button: 
+            on_release: root.manager.current = 'main'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
+            font_size: 25
+            pos_hint:{'center_x':0.5, 'bottom':0}
+            size_hint: 0.3, 0.1
+			
+				   
+<Screen4>:
+    name: 'Screen4'
+    BoxLayout:
+        orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
+		Button:
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[3]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+            item_strings: [str("\nRESTAURANT"), str(app.h[3]['name']), str("\nPHONE NUMBER"), str(app.h[3]['phone']), str("\nWEBSITE"), str(app.h[3]['url']), str("\nADDRESS"), str(app.h[3]['address'])]
+        
+			
+		Button: 
+            on_release: root.manager.current = 'main'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
+            font_size: 25
+            pos_hint:{'center_x': 0.5, 'bottom':0}
+            size_hint: 0.3, 0.1
+			
+			
+<Screen5>:
+    name: 'Screen5'
+    BoxLayout:
+        orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
+		Button:
+			text: 'MENU'
+			background_color: 0, 0, 1, 1
+		    on_release: 
+			    import webbrowser
+				webbrowser.open(str(app.h[4]['menu_url']))
+			font_size: 20
+			pos_hint:{'center_x': 0.5, 'center_y': 0}
+			size_hint: 0.3, 0.1
+			
+		ListView:
+            item_strings: [str("\nRESTAURANT"), str(app.h[4]['name']), str("\nPHONE NUMBER"), str(app.h[4]['phone']), str("\nWEBSITE"), str(app.h[4]['url']), str("\nADDRESS"), str(app.h[4]['address'])]
+        
+			
+		Button: 
+            on_release: root.manager.current = 'main'
+            text: 'HOME'
+			background_color: 0, 0, 1, 1
+            font_size: 25
+            pos_hint:{'center_x':0.5, 'bottom':0}
+            size_hint: 0.3, 0.1
+    
