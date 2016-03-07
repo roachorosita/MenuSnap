@@ -279,8 +279,6 @@ class APICall:
       
 		
     def locu_search(self):
-        #print self.lon, self.lat
-
         #locu_api = '77ca60baa8056bc0c1aa6f422bc525a56ed1443e'
         url = 'https://api.locu.com/v1_0/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&location=' \
               + str(self.lat) + ',' + str(self.lon) + '&radius=' + str(self.rad) + '&category=restaurant'
@@ -289,10 +287,8 @@ class APICall:
                ' "fields" : [ "name", "location", "contact", "website_url", "menu_url"],' \
                ' "venue_queries" : [{ "categories" : "restaurant",' \
                ' "location" : { "geo" : { "$in_lat_lng_radius" : [' + str(self.lat) + ', ' + str(self.lon) + ', ' + str(self.rad) + ']}}}]}'
-        #print param
         save = urllib2.urlopen('https://api.locu.com/v2/venue/search', data=param)
         result = json.load(save)
-        #print result
         return result
 
     def parse(self):
@@ -319,16 +315,10 @@ class APICall:
                                                ' ' + str(data['venues'][item]['location']['postal_code'])
             except: pass
 
-        print self.lon, self.lat
-        #print 'parsing successful'
-        #print restaurant_list
         return restaurant_list
 
 	
 class HomeScreen(Screen):
-    lon_value =  StringProperty()
-    lat_value =  StringProperty()
-    
     def update(self):
         self.ids.b1.text = MainApp.h[0]['name']
         self.ids.b2.text = MainApp.h[1]['name']
