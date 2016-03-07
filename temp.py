@@ -8,9 +8,9 @@ import json
 import urllib2
 
 class APICall:
-    def __init__(self, longitude = 34.0295914, latitude = -117.414511, radius = 5000):
-        self.lon = longitude
+    def __init__(self, latitude = -117.414511, longitude = 34.0295914, radius = 5000):
         self.lat = latitude
+        self.lon = longitude
         self.rad = radius
 
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
@@ -19,22 +19,23 @@ from kivy.uix.floatlayout import FloatLayout
 import json
 import urllib2
 
-
-def locu_search(gps):
-    #locu_api = '77ca60baa8056bc0c1aa6f422bc525a56ed1443e'
-    url = 'https://api.locu.com/v1_0/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&location=34.056286,-117.81601&radius=1600&category=restaurant'
+class APICall:
+    def __init__(self, longitude = -117.4145, latitude = 34.02959, radius = 5000):
+        self.lon = longitude
+        self.lat = latitude
+        self.rad = radius
 
     def locu_search(self):
         print self.lon, self.lat
 
         #locu_api = '77ca60baa8056bc0c1aa6f422bc525a56ed1443e'
         url = 'https://api.locu.com/v1_0/venue/search/?api_key=77ca60baa8056bc0c1aa6f422bc525a56ed1443e&location=' \
-              + str(self.lon) + ',' + str(self.lat) + '&radius=' + str(self.rad) + '&category=restaurant'
+              + str(self.lat) + ',' + str(self.lon) + '&radius=' + str(self.rad) + '&category=restaurant'
 
         param = '{ "api_key" : "77ca60baa8056bc0c1aa6f422bc525a56ed1443e",' \
                ' "fields" : [ "name", "location", "contact", "website_url", "menu_url"],' \
                ' "venue_queries" : [{ "categories" : "restaurant",' \
-               ' "location" : { "geo" : { "$in_lat_lng_radius" : [' + str(self.lon) + ', ' + str(self.lat) + ', ' + str(self.rad) + ']}}}]}'
+               ' "location" : { "geo" : { "$in_lat_lng_radius" : [' + str(self.lat) + ', ' + str(self.lon) + ', ' + str(self.rad) + ']}}}]}'
         print param
         save = urllib2.urlopen('https://api.locu.com/v2/venue/search', data=param)
         result = json.load(save)
