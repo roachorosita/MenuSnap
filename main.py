@@ -5,6 +5,7 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 import json
 import urllib2
+
 kv = '''
 # File name: temp.py
 #: import FadeTransition kivy.uix.screenmanager.FadeTransition
@@ -125,7 +126,7 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 
 		ListView:
-		    item_strings: [str("\nRESTAURANT"), str(app.h[0]['name']), str("\nPHONE NUMBER"), str(app.h[0]['phone']), str("\nWEBSITE"), str(app.h[0]['url']), str("\nADDRESS"), str(app.h[0]['address'])]
+		    item_strings: [str("RESTAURANT"), str(app.h[0]['name']), str("PHONE NUMBER"), str(app.h[0]['phone']), str("WEBSITE"), str(app.h[0]['url']), str("ADDRESS"), str(app.h[0]['address'])]
 
 
 		Button:
@@ -159,7 +160,7 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 
 		ListView:
-		    item_strings: [str("\nRESTAURANT"), str(app.h[1]['name']), str("\nPHONE NUMBER"), str(app.h[1]['phone']), str("\nWEBSITE"), str(app.h[1]['url']), str("\nADDRESS"), str(app.h[1]['address'])]
+		    item_strings: [str("RESTAURANT"), str(app.h[1]['name']), str("PHONE NUMBER"), str(app.h[1]['phone']), str("WEBSITE"), str(app.h[1]['url']), str("ADDRESS"), str(app.h[1]['address'])]
 
 		Button:
             on_release: root.manager.current = 'main'
@@ -191,7 +192,7 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 
 		ListView:
-            item_strings: [str("\nRESTAURANT"), str(app.h[2]['name']), str("\nPHONE NUMBER"), str(app.h[2]['phone']), str("\nWEBSITE"), str(app.h[2]['url']), str("\nADDRESS"), str(app.h[2]['address'])]
+            item_strings: [str("RESTAURANT"), str(app.h[2]['name']), str("PHONE NUMBER"), str(app.h[2]['phone']), str("WEBSITE"), str(app.h[2]['url']), str("ADDRESS"), str(app.h[2]['address'])]
 
 
 		Button:
@@ -225,7 +226,7 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 
 		ListView:
-            item_strings: [str("\nRESTAURANT"), str(app.h[3]['name']), str("\nPHONE NUMBER"), str(app.h[3]['phone']), str("\nWEBSITE"), str(app.h[3]['url']), str("\nADDRESS"), str(app.h[3]['address'])]
+            item_strings: [str("RESTAURANT"), str(app.h[3]['name']), str("PHONE NUMBER"), str(app.h[3]['phone']), str("WEBSITE"), str(app.h[3]['url']), str("ADDRESS"), str(app.h[3]['address'])]
 
 
 		Button:
@@ -259,7 +260,7 @@ ScreenManagement:
 			size_hint: 0.3, 0.1
 
 		ListView:
-            item_strings: [str("\nRESTAURANT"), str(app.h[4]['name']), str("\nPHONE NUMBER"), str(app.h[4]['phone']), str("\nWEBSITE"), str(app.h[4]['url']), str("\nADDRESS"), str(app.h[4]['address'])]
+            item_strings: [str("RESTAURANT"), str(app.h[4]['name']), str("PHONE NUMBER"), str(app.h[4]['phone']), str("WEBSITE"), str(app.h[4]['url']), str("ADDRESS"), str(app.h[4]['address'])]
 
 
 		Button:
@@ -345,7 +346,7 @@ class MainApp(App):
     def build(self):
         self.API = APICall()
         self.h = self.API.parse()
-        return Builder.load_file("temp.kv")
+        return Builder.load_string(kv)
 
 if __name__ == '__main__':
     MainApp().run()
