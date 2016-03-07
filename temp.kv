@@ -57,6 +57,14 @@ ScreenManagement:
                 font_size: 15
                 valign: 'bottom'
                 halign: 'left'
+
+            TextInput:
+                name: 'latitude'
+                hint_text: "Latitude"
+                multiline: False
+                on_text_validate:
+                    app.API.lat =  self.text
+
             TextInput:
                 name: 'longitude'
                 hint_text: "Longitude"
@@ -65,12 +73,7 @@ ScreenManagement:
                     app.API.lon =  self.text
 
 
-            TextInput:
-                name: 'latitude'
-                hint_text: "Latitude"
-                multiline: False
-                on_text_validate:
-                    app.API.lat =  self.text
+
 
             Button:
                 text: "Refresh"
