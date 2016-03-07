@@ -14,8 +14,16 @@ ScreenManagement:
     name: 'main'
     BoxLayout:
         orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 0, 0.5, 1, 0.5
+			Rectangle:
+				#self here refers to the widget--> BoxLayout
+				pos: self.pos
+				size: self.size
         Button:
             id: b1
+			background_color: 0, 0, 1, 1
             on_release: root.manager.current = 'Screen1'
             text: app.h[0]['name']
             size_hint: 0.5, 0.15
@@ -23,6 +31,7 @@ ScreenManagement:
             font_size: 25
         Button:
             id: b2
+			background_color: 0, 0, 1, 1
             on_release: root.manager.current = 'Screen2'
             text: app.h[1]['name']
             size_hint: 0.5, 0.15
@@ -30,6 +39,7 @@ ScreenManagement:
             font_size: 25
         Button:
             id: b3
+			background_color: 0, 0, 1, 1
             on_release: root.manager.current = 'Screen3'
             text: app.h[2]['name']
             size_hint: 0.5, 0.15
@@ -37,6 +47,7 @@ ScreenManagement:
             font_size: 25
         Button:
             id: b4
+			background_color: 0, 0, 1, 1
             on_release: root.manager.current = 'Screen4'
             text: app.h[3]['name']
             size_hint: 0.5, 0.15
@@ -44,20 +55,17 @@ ScreenManagement:
             font_size: 25
         Button:
             id: b5
+			background_color: 0, 0, 1, 1
             on_release: root.manager.current = 'Screen5'
             text: app.h[4]['name']
             size_hint: 0.5, 0.15
             pos_hint: {'center_x': .5}
             font_size: 25
         GridLayout:
-            size_hint: 0.5, 0.15
+            size_hint: 0.5, 0.1
+            pos_hint: {'center_x': 0.5}
             rows:1
-            Label:
-                text: "Current Location:"
-                font_size: 15
-                valign: 'bottom'
-                halign: 'left'
-
+			
             TextInput:
                 name: 'latitude'
                 hint_text: "Latitude"
@@ -77,6 +85,7 @@ ScreenManagement:
 
             Button:
                 text: "Refresh"
+				background_color: 0, 0, 1, 1
                 on_release:
                     app.h = app.API.parse()
                     root.ids.b1.text = app.h[0]['name']
